@@ -687,8 +687,18 @@ function installOpenVPN() {
       			patch -p1 < 06-tunnelblick-openvpn_xorpatch-e.diff
       			./configure --enable-systemd --enable-async-push --enable-iproute2
       			make && make install
+
+  			sudo cp openvpn-2.5.5/distro/systemd/openvpn-server@.service.in /lib/systemd/system/openvpn-server@.service
+     			sed -i 's/@sbindir@/#/usr#/local#/sbin/g' /lib/systemd/system/openvpn-server@.service
+			sed -i 's/%i/server/g' /lib/systemd/system/openvpn-server@.service
+   			sed -i 's/%I/server/g' /lib/systemd/system/openvpn-server@.service
+     			sed -i 's/%t/tmp/g' /lib/systemd/system/openvpn-server@.service
+
       			cd .. && rm -r openvpn-2.5.5 && rm -r Tunnelblick-3.8.8beta03
-	 
+
+  			mkdir /run/openvpn
+     			touch /run/openvpn/server.pid
+			   			
 	 		# sudo mkdir /etc/openvpn && \
     			# sudo mkdir /etc/openvpn/server && \
 			# sudo mkdir /etc/openvpn/client && \
