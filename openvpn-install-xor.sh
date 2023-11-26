@@ -698,7 +698,9 @@ function installOpenVPN() {
 
   			mkdir /run/openvpn
      			touch /run/openvpn/server.pid
-			   			
+
+      			# openssl rand -base64 24
+	 		# scramble obfuscate DPeQw3SvyIMdJqckjznYVLVUSG4p4KIQ
 	 		# sudo mkdir /etc/openvpn && \
     			# sudo mkdir /etc/openvpn/server && \
 			# sudo mkdir /etc/openvpn/client && \
