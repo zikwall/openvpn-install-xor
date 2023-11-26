@@ -1285,7 +1285,8 @@ function removeOpenVPN() {
 		systemctl daemon-reload
 		rm /etc/iptables/add-openvpn-rules.sh
 		rm /etc/iptables/rm-openvpn-rules.sh
-
+		rm /lib/systemd/system/openvpn-server@.service
+  
 		# SELinux
 		if hash sestatus 2>/dev/null; then
 			if sestatus | grep "Current mode" | grep -qs "enforcing"; then
