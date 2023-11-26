@@ -676,10 +676,10 @@ function installOpenVPN() {
 			# Ubuntu > 16.04 and Debian > 8 have OpenVPN >= 2.4 without the need of a third party repository.
 			# apt-get install -y openvpn iptables openssl wget ca-certificates curl
       apt-get install -y wget tar unzip build-essential libssl-dev iproute2 liblz4-dev liblzo2-dev libpam0g-dev libpkcs11-helper1-dev libsystemd-dev easy-rsa iptables pkg-config
-      wget https://swupdate.openvpn.org/community/releases/openvpn-2.5.9.tar.gz && tar xvf openvpn-2.5.9.tar.gz && \
-      wget https://github.com/Tunnelblick/Tunnelblick/archive/refs/tags/v3.8.8a.zip && unzip v3.8.8a.zip && \
-      cp Tunnelblick-3.8.8a/third_party/sources/openvpn/openvpn-2.5.9/patches/*.diff openvpn-2.5.9 && \
-      cd openvpn-2.5.9 && \
+      wget https://swupdate.openvpn.org/community/releases/openvpn-2.5.5.tar.gz && tar xvf openvpn-2.5.5.tar.gz && \
+      wget https://github.com/Tunnelblick/Tunnelblick/archive/refs/tags/3.8.8beta03.zip && unzip 3.8.8beta03.zip && \
+      cp Tunnelblick-3.8.8beta03/third_party/sources/openvpn/openvpn-2.5.5/patches/*.diff openvpn-2.5.5 && \
+      cd openvpn-2.5.5 && \
       patch -p1 < 02-tunnelblick-openvpn_xorpatch-a.diff && \
       patch -p1 < 03-tunnelblick-openvpn_xorpatch-b.diff && \
       patch -p1 < 04-tunnelblick-openvpn_xorpatch-c.diff && \
@@ -687,7 +687,7 @@ function installOpenVPN() {
       patch -p1 < 06-tunnelblick-openvpn_xorpatch-e.diff && \
       ./configure --disable-systemd --enable-async-push --enable-iproute2 && \
       make && make install && \
-      cd .. && rm -r openvpn-2.5.3 && rm -r Tunnelblick-3.8.6beta05
+      cd .. && rm -r openvpn-2.5.5 && rm -r Tunnelblick-3.8.8beta03
 		elif [[ $OS == 'centos' ]]; then
 			yum install -y epel-release
 			yum install -y openvpn iptables openssl wget ca-certificates curl tar 'policycoreutils-python*'
